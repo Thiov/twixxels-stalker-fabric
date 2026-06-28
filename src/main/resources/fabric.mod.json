@@ -3,7 +3,7 @@
   "id": "stalker",
   "version": "${version}",
   "name": "Twixxel's Stalker",
-  "description": "Adds The Stalker, a silent hunter that pursues you when you're not looking. Fabric port of MrPerkasc's mod.",
+  "description": "Unofficial Fabric port of Twixxel's Stalker for Minecraft 26.1.2. Adds The Stalker, a silent hunter that pursues you when you're not looking. Original mod by MrPerkasc (idea by Twixxel_lesgo, designs by LCrandom); this Fabric port is maintained by Thiov and is not affiliated with or endorsed by the original authors.",
   "authors": ["MrPerkasc", "Twixxel_lesgo"],
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/twixxels-stalker"
