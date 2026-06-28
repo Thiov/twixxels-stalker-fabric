@@ -1,4 +1,4 @@
-# Twixxel's Stalker — Fabric 1.26.1.2 port
+# Twixxel's Stalker — Fabric 26.1.2 port
 
 A Fabric port of **[Twixxel's Stalker](https://www.curseforge.com/minecraft/mc-mods/twixxels-stalker)** by **MrPerkasc** (original idea by Twixxel_lesgo, designs by LCrandom), brought from Forge 1.20.1 to **Fabric on Minecraft 26.1.2**.
 
