@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "stalker",
+  "version": "${version}",
+  "name": "Twixxel's Stalker",
+  "description": "Adds The Stalker, a silent hunter that pursues you when you're not looking. Fabric port of MrPerkasc's mod.",
+  "authors": ["MrPerkasc", "Twixxel_lesgo"],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/twixxels-stalker"
+  },
+  "license": "MIT",
+  "icon": "assets/stalker/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.thestalker.TheStalker"],
+    "client": ["com.thestalker.client.StalkerClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.19.2",
+    "fabric-api": ">=0.146.1",
+    "minecraft": ">=26.1.2",
+    "java": ">=25"
+  }
+}
