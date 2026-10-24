@@ -254,8 +254,8 @@ public class StalkerEntity extends PathfinderMob {
     }
 
     @Override
-    public void knockback(double strength, double x, double z) {
-        // immovable
+    public void knockback(double strength, double x, double z, DamageSource source, float magnitude, boolean alwaysApply) {
+        // immovable (26.2+: the 5-arg overload delegates to this one)
     }
 
     @Override

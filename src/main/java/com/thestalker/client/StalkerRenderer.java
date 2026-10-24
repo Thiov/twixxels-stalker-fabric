@@ -3,7 +3,6 @@ package com.thestalker.client;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
-import com.thestalker.client.compat.SubmitNodeBufferSource;
 import com.thestalker.entity.StalkerEntity;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -45,26 +44,23 @@ public class StalkerRenderer extends EntityRenderer<StalkerEntity, StalkerRender
         float halfH = height / 2.0F;
         float halfW = height / 2.0F;
         Identifier texture = getTextureLocation(state.imageIndex);
-
-        SubmitNodeBufferSource buffer = new SubmitNodeBufferSource();
-        buffer.bindLive(collector, poseStack);
+        int light = state.lightCoords;
 
         poseStack.pushPose();
         poseStack.translate(0.0F, halfH, 0.0F);
-        poseStack.mulPose(Axis.YP.rotationDegrees(-camera.yRot));
-        poseStack.mulPose(Axis.XP.rotationDegrees(camera.xRot));
+        poseStack.rotate(Axis.YP.rotationDegrees(-camera.yRot));
+        poseStack.rotate(Axis.XP.rotationDegrees(camera.xRot));
         poseStack.translate(0.0F, -halfH, 0.0F);
 
-        Matrix4f pose = poseStack.last().pose();
-        int light = state.lightCoords;
-        VertexConsumer vc = buffer.getBuffer(RenderTypes.entityCutout(texture));
-        quad(vc, pose, -halfW, 0.0F, 0.0F, 1.0F, light);
-        quad(vc, pose, halfW, 0.0F, 1.0F, 1.0F, light);
-        quad(vc, pose, halfW, height, 1.0F, 0.0F, light);
-        quad(vc, pose, -halfW, height, 0.0F, 0.0F, light);
+        collector.submitCustomGeometry(poseStack, RenderTypes.entityCutout(texture), (pose, vc) -> {
+            Matrix4f matrix = pose.pose();
+            quad(vc, matrix, -halfW, 0.0F, 0.0F, 1.0F, light);
+            quad(vc, matrix, halfW, 0.0F, 1.0F, 1.0F, light);
+            quad(vc, matrix, halfW, height, 1.0F, 0.0F, light);
+            quad(vc, matrix, -halfW, height, 0.0F, 0.0F, light);
+        });
 
         poseStack.popPose();
-        buffer.flushInto(collector, poseStack);
     }
 
     private static void quad(VertexConsumer vc, Matrix4f pose, float x, float y, float u, float v, int light) {
